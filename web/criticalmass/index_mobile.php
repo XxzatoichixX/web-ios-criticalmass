@@ -1,4 +1,24 @@
-<!--
+-- <script>
+   var appId = 'APP_ID';
+   var uid;
+
+   // Initialize the JS SDK
+   FB.init({
+     appId: appId,
+     cookie: true,
+   });
+
+   // Get the user's UID
+   FB.getLoginStatus(function(response) {
+     uid = response.authResponse.userID ? response.authResponse.userID : null;
+   });
+
+   function authUser() {
+     FB.login(function(response) {
+       uid = response.authResponse.userID ? response.authResponse.userID : null;
+     }, {scope:'email,publish_actions'});
+   }
+ </script>
 * Copyright 2012 Facebook, Inc.
 *
 * You are hereby granted a non-exclusive, worldwide, royalty-free license to
